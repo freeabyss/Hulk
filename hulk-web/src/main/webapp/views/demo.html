@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+</head>
+<body>
+<div class="container">
+    <h1> free abyss</h1>
+    <div class="col-md-12">
+        <ul class="nav nav-tabs">
+            <li><a id="document" href="javascript:void(0)">document</a></li>
+            <li><a id="div" href="javascript:void(0)">div</a></li>
+            <li><a id="div-tag" href="javascript:void(0)">&lt;div></a></li>
+            <li><a id="test" href="javascript:void(0)">ID 选择器</a></li>
+            <li><a id="test-class" href="javascript:void(0)">class 选择器</a></li>
+        </ul>
+    </div>
+
+</div>
+
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="../assets/jquery/jquery-3.1.0.js"></script>
+<script>
+    $("#document").click(function () {
+        $("<div id='doc-ad' class='btn btn-default'>ceshi</div>");
+
+    });
+    $("#div").click(function () {
+        $("div");
+        $("div.col-md-12");
+    });
+    $("#div-tag").click(function () {
+        $("<div>");
+    });
+    $("#test").click(function () {
+        $("#test");
+    });
+    $("#test-class").click(function () {
+        $(".col-md-12");
+    });
+</script>
+</body>
+</html>
