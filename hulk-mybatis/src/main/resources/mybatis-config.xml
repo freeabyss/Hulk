@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <package name="modul"/>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url"
+                          value="jdbc:mysql://localhost:3306/mybatis_test?autoReconnect=true&amp;useSSL=false"/>
+                <property name="username" value="root"/>
+                <property name="password" value="abyss.shui"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!-- resource 指定classpath中的mapper文件 -->
+        <mapper resource="dao/StudentMapper.xml"/>
+        <!--指向一个mapper接口-->
+        <mapper class="science.freeabyss.thing.mybatis.dao.StudentMapper"/>
+        <!--通过文件系统路径或者 web URL 地址来指向mapper文件-->
+        <mapper url="file:////mybatis/app/Tutormapper.xml"/>
+        <!--指向Mapper接口的包名-->
+        <package name="dao"/>
+    </mappers>
+
+    <typeHandlers>
+        <typeHandler handler="science.freeabyss.thing.mybatis.typehandler.PhoneTypeHandler"/>
+    </typeHandlers>
+
+    <!--覆盖MyBatis的全局参数设置-->
+    <settings>
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+</configuration>
