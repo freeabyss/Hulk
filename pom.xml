@@ -10,15 +10,16 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
+        <module>hulk-basic</module>
         <module>hulk-dao</module>
         <module>hulk-service</module>
         <module>hulk-model</module>
         <module>hulk-web</module>
         <module>hulk-junit</module>
-        <module>hulk-demo</module>
         <module>hulk-mybatis</module>
         <module>hulk-jdbc</module>
         <module>hulk-common</module>
+        <module>hulk-spring</module>
     </modules>
 
     <properties>

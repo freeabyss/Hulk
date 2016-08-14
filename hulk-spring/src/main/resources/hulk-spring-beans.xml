@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--为所有bean 添加默认的初始化和销毁方法-->
+    <!--default-init-method="turnOnLights"-->
+    <!--default-destroy-method="turnOffLights"-->
+    <!--&gt;-->
+
+    <!-- 构造器注入 -->
+    <bean id="duke" class="science.freeabyss.hulk.spring.beans.Juggler">
+        <constructor-arg value="15"></constructor-arg>
+    </bean>
+
+    <!-- 调用setter方法注入-->
+    <bean id="kenny" class="science.freeabyss.hulk.spring.beans.Instrumentalist">
+        <property name="song" value="Jingle Bells"/>
+        <!--<property name="poem" ref="song29"/>-->
+        <property name="poem">
+            <!--内部bean-->
+            <bean class="science.freeabyss.hulk.spring.beans.Song29"/>
+        </property>
+    </bean>
+
+    <!-- 引用其他Bean -->
+    <bean id="song29" class="science.freeabyss.hulk.spring.beans.Song29"/>
+    <bean id="poeticDuke" class="science.freeabyss.hulk.spring.beans.PoeticJuggler">
+        <constructor-arg value="16"></constructor-arg>
+        <constructor-arg ref="song29"/>
+    </bean>
+
+    <!--调用工厂方法-->
+    <bean id="stage" class="science.freeabyss.hulk.spring.beans.Stage" factory-method="getInstance"/>
+
+    <!-- 作用域 -->
+    <!-- prototype 每次调用创建一次实例 -->
+    <!-- singleton 只有一个实例对象 默认-->
+    <bean id="ticket" class="science.freeabyss.hulk.spring.beans.Ticket" scope="prototype"/>
+
+    <!-- 初始化和销毁操作 -->
+    <bean id="auditorium" class="science.freeabyss.hulk.spring.beans.Auditorium"
+          init-method="turnOnLights"
+          destroy-method="turnOffLights"/>
+
+    <!--==============================================-->
+    <!--=========== 装配集合 ==========================-->
+    <!--=========== map list set props ===============-->
+    <!--==============================================-->
+    <bean id="guitar" class="science.freeabyss.hulk.spring.beans.Guitar"/>
+    <bean id="hank" class="science.freeabyss.hulk.spring.beans.OneManBand">
+        <property name="instruments">
+            <!--装配list, set-->
+            <list>
+                <ref bean="guitar"/>
+                <bean class="science.freeabyss.hulk.spring.beans.Cymbal"/>
+                <bean class="science.freeabyss.hulk.spring.beans.Harmonica"/>
+                <null/>
+            </list>
+        </property>
+        <!--
+        map 类型
+        <property name="mapTest" >
+            <map>
+                <entry key="keyString" value="valueString"/>
+                <entry key="keyString" value-ref="duke"/>
+                <entry key-ref="duke" value="valueString"/>
+                <entry key-ref="kenny" value-ref="duke"/>
+            </map>
+        </property>
+        -->
+        <!--
+        props 必须都为string
+         <property name="propertiesTest">
+             <props>
+                 <prop key="keyString">valueString</prop>
+             </props>
+         </property>
+         -->
+    </bean>
+</beans>

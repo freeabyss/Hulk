@@ -31,21 +31,6 @@ public final class EvernoteUtil {
     private NoteStoreClient noteStore = null;
     private String newNoteGuid;
 
-    public static void main(String[] args) {
-        try {
-            EvernoteUtil evernote = new EvernoteUtil(AUTH_TOKEN);
-            evernote.listNotebooks();
-            evernote.listLinkedNotebooks();
-        } catch (TException e) {
-            e.printStackTrace();
-        } catch (EDAMSystemException e) {
-            e.printStackTrace();
-        } catch (EDAMUserException e) {
-            e.printStackTrace();
-        } catch (EDAMNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
 
     /**
      * 初始化 笔记本
@@ -205,7 +190,7 @@ public final class EvernoteUtil {
 
         // In this example, we search for notes that have the term "EDAMDemo" in
         // the title.
-        // This should return the sample note that we created in this demo app.
+        // This should return the sample note that we created in this basic app.
         String query = "intitle:EDAMDemo";
 
         // To search for notes with a specific tag, we could do something like
