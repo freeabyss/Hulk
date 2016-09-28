@@ -34,7 +34,7 @@ public class PropertiesUtil {
 
     public static int getInteger(String key) {
         String value = getString(key);
-        return Integer.getInteger(value);
+        return Integer.parseInt(value);
     }
 
     public static boolean getBoolean(String key) {

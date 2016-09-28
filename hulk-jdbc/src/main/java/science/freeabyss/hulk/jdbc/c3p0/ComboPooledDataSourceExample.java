@@ -26,7 +26,6 @@ public class ComboPooledDataSourceExample {
             cpds.setJdbcUrl(PropertiesUtil.getString("c3p0.url"));
             cpds.setUser(PropertiesUtil.getString("c3p0.username"));
             cpds.setPassword(PropertiesUtil.getString("c3p0.password"));
-
             cpds.setMinPoolSize(PropertiesUtil.getInteger("c3p0.minPoolSize"));
             cpds.setMaxPoolSize(PropertiesUtil.getInteger("c3p0.maxPoolSize"));
             //当连接池中的连接耗尽的时候 c3p0 一次同时获取的连接数
@@ -48,7 +47,6 @@ public class ComboPooledDataSourceExample {
         } catch (PropertyVetoException e) {
             e.printStackTrace();
         }
-
     }
 
     public static synchronized Connection getConnection() throws SQLException {
